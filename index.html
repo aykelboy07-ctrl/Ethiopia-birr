@@ -1,1 +1,304 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethiopia Birr</title>
+    <style>
+        :root {
+            --bg-color: #0d0b21;
+            --card-bg: #19143b;
+            --accent-color: #6366f1;
+            --text-color: #ffffff;
+            --text-secondary: #94a3b8;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            padding-bottom: 70px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #4f46e5, #9333ea);
+        }
+        .container {
+            padding: 15px;
+            max-width: 500px;
+            margin: auto;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .balance-card {
+            text-align: center;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+        .balance-amount {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #120f29;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #2d265c;
+        }
+        .nav-item {
+            color: var(--text-secondary);
+            text-align: center;
+            font-size: 12px;
+            cursor: pointer;
+            flex: 1;
+        }
+        .nav-item.active {
+            color: #fff;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .feed-item {
+            font-size: 13px;
+            padding: 8px 0;
+            border-bottom: 1px solid #2d265c;
+            display: flex;
+            justify-content: space-between;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #251f4f;
+            border: 1px solid #3f3679;
+            color: #fff;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Ethiopia Birr</div>
+
+    <div class="container">
+        <!-- HOME SECTION -->
+        <div id="home" class="section active">
+            <div class="card balance-card">
+                <div>ጠቅላላ ቀሪ ሂሳብ</div>
+                <div class="balance-amount" id="balanceDisplay">150 ETB</div>
+                <div>ጠቅላላ ገቢ: 150 ETB</div>
+            </div>
+
+            <div class="card">
+                <h3>የማህበራዊ ስራዎች - 100 ETB ሽልማት</h3>
+                <div style="margin-top: 10px;">
+                    <p>Telegram ቻናልን ይቀላቀሉ (+50 ETB)</p>
+                    <button class="btn" onclick="openChannel('https://t.me/Alphatech_earn', 50)">ቻናል 1 ጆይን አድርግ</button>
+                </div>
+                <div style="margin-top: 15px;">
+                    <p>Telegram ቻናልን ይቀላቀሉ (+50 ETB)</p>
+                    <button class="btn" onclick="openChannel('https://t.me/ethiopia_etb_birr', 50)">ቻናል 2 ጆይን አድርግ</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>የቀጥታ መውጫዎች (Live Feed)</h3>
+                <div id="liveFeed">
+                    <!-- Dynamic Live Feed items -->
+                </div>
+            </div>
+        </div>
+
+        <!-- EARN SECTION -->
+        <div id="earn" class="section">
+            <div class="card">
+                <h2>ተግባራት (Tasks)</h2>
+                <p>ቻናሎችን ይቀላቀሉ እና ቪዲዮዎችን ይመልከቱ</p>
+                <div style="margin-top:15px;">
+                    <p><b>ፋሮን ቴክ ቻናል (+50 ብር)</b></p>
+                    <button class="btn" onclick="openChannel('https://t.me/faron_tech', 50)">ይቀላቀሉ</button>
+                </div>
+                <div style="margin-top:15px;">
+                    <p><b>ፕላስ ቴክ ሀብ ቻናል (+50 ብር)</b></p>
+                    <button class="btn" onclick="openChannel('https://t.me/PlusTechHub', 50)">ይቀላቀሉ</button>
+                </div>
+                <div style="margin-top:15px;">
+                    <p><b>ኢት ኦንላይን ጆብ ቻናል (+50 ብር)</b></p>
+                    <button class="btn" onclick="openChannel('https://t.me/Eth_online_job', 50)">ይቀላቀሉ</button>
+                </div>
+                <div style="margin-top:15px;">
+                    <p><b>ቪዲዮ ይመልከቱ (30 ብር)</b></p>
+                    <button class="btn" onclick="watchVideo()">ቪዲዮ አሳይ (30 ETB)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOP SECTION -->
+        <div id="top" class="section">
+            <div class="card">
+                <h2>ከፍተኛ ገቢ ያገኙ</h2>
+                <p style="color:var(--text-secondary);">በቀጥታ የሚዘምን ሰንጠረዥ</p>
+                <div style="margin-top:15px;">
+                    <div class="feed-item"><span>1. Dawit Tadesse</span> <b>5,400 ETB</b></div>
+                    <div class="feed-item"><span>2. Abel Bekele</span> <b>4,850 ETB</b></div>
+                    <div class="feed-item"><span>3. Mekdes Alemu</span> <b>4,200 ETB</b></div>
+                    <div class="feed-item"><span>4. Samuel Girma</span> <b>3,950 ETB</b></div>
+                    <div class="feed-item"><span>5. Tigist Haile</span> <b>3,100 ETB</b></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INVITE SECTION -->
+        <div id="invite" class="section">
+            <div class="card">
+                <h2>ጋብዝ እና ሽልማት ያግኙ</h2>
+                <p>ለእያንዳንዱ የጋበዙት ሰው <b>50 ETB</b> ያግኙ!</p>
+                <input type="text" id="refLink" value="https://t.me/Ethiopian_birrbot?start=ref_8B45EF4F" readonly>
+                <button class="btn" onclick="copyRef()">ሊንኩን ኮፒ አድርግ</button>
+            </div>
+        </div>
+
+        <!-- WITHDRAW SECTION -->
+        <div id="withdraw" class="section">
+            <div class="card">
+                <h2>ገንዘብ ማውጣት (Withdraw)</h2>
+                <p>ዝቅተኛው የማውጫ መጠን: <b>1,000 ETB</b></p>
+                <div style="margin: 15px 0;">
+                    <label>የባንክ ዓይነት ይምረጡ</label>
+                    <select id="bankType">
+                        <option value="CBE">የኢትዮጵያ ንግድ ባንክ (CBE)</option>
+                        <option value="Telebirr">ቴሌብር (Telebirr)</option>
+                        <option value="Abyssinia">አቢሲኒያ ባንክ (Abyssinia)</option>
+                    </select>
+                    <label>የባንክ አካውንት / ስልክ ቁጥር</label>
+                    <input type="text" id="accNumber" placeholder="ቁጥርዎን ያስገቡ">
+                    <label>የሚወጣው መጠን (ETB)</label>
+                    <input type="number" id="withdrawAmount" placeholder="1000">
+                    <button class="btn" onclick="requestWithdraw()">ጥያቄ ላክ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM NAVIGATION -->
+    <div class="nav-bar">
+        <div class="nav-item active" onclick="switchTab('home')">🏠<br>መነሻ</div>
+        <div class="nav-item" onclick="switchTab('earn')">⚡<br>Earn</div>
+        <div class="nav-item" onclick="switchTab('top')">🏆<br>Top</div>
+        <div class="nav-item" onclick="switchTab('invite')">👥<br>ጋብዝ</div>
+        <div class="nav-item" onclick="switchTab('withdraw')">💳<br>Withdraw</div>
+    </div>
+
+    <script>
+        let balance = 150;
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function updateBalance(amount) {
+            balance += amount;
+            document.getElementById('balanceDisplay').innerText = balance + " ETB";
+        }
+
+        function openChannel(url, reward) {
+            window.open(url, '_blank');
+            setTimeout(() => {
+                updateBalance(reward);
+                alert("ሽልማትዎ ተሰጥቷል: +" + reward + " ETB");
+            }, 3000);
+        }
+
+        function watchVideo() {
+            alert("ቪዲዮ እየታየ ነው... እባክዎ ትንሽ ይጠብቁ።");
+            setTimeout(() => {
+                updateBalance(30);
+                alert("እንኳን ደስ አለዎት! 30 ETB አግኝተዋል።");
+            }, 4000);
+        }
+
+        function copyRef() {
+            const copyText = document.getElementById("refLink");
+            copyText.select();
+            navigator.clipboard.writeText(copyText.value);
+            alert("የግብዣ ሊንክ ተኮርጅዋል!");
+        }
+
+        function requestWithdraw() {
+            const amount = parseInt(document.getElementById('withdrawAmount').value);
+            if (amount < 1000) {
+                alert("ዝቅተኛው የማውጫ መጠን 1,000 ETB ነው።");
+                return;
+            }
+            if (balance < amount) {
+                alert("በቂ ቀሪ ሂሳብ የለዎትም!");
+                return;
+            }
+            balance -= amount;
+            document.getElementById('balanceDisplay').innerText = balance + " ETB";
+            alert("የገንዘብ ማውጣት ጥያቄዎ ተቀባይነት አግኝቷል (Pending)! በ 7 ቀን ውስጥ ወደ አካውንትዎ ይገባል።");
+        }
+
+        // Fake Live Feed Generator
+        const names = ["Abebe Kebede", "Chala Tadesse", "Tigist Mamo", "Dawit Bekele", "Meseret Alemu", "Yonas Getachew", "Hana Tadesse", "Birhanu Kassa", "Samrawit Assefa", "Natnael Desta", "Ephrem Tadesse", "Rahel Alemu"];
+        const banks = ["CBE", "Telebirr", "Abyssinia"];
+        const amounts = [1000, 1200, 1400, 2000, 2500, 4000, 5000];
+
+        function addFakeFeed() {
+            const feedContainer = document.getElementById('liveFeed');
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomBank = banks[Math.floor(Math.random() * banks.length)];
+            const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+
+            const item = document.div;
+            const div = document.createElement('div');
+            div.className = 'feed-item';
+            div.innerHTML = `<span>${randomName} (${randomBank})</span> <b style="color:#4ade80;">+${randomAmount} ETB</b>`;
+            
+            feedContainer.insertBefore(div, feedContainer.firstChild);
+            if (feedContainer.children.length > 6) {
+                feedContainer.removeChild(feedContainer.lastChild);
+            }
+        }
+
+        setInterval(addFakeFeed, 4000);
+    </script>
+</body>
+</html>
 
